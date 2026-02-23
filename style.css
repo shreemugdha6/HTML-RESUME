@@ -1,0 +1,379 @@
+/* Core Variables mapped to the Graphic */
+:root {
+    --bg-page: #eaeaea;
+    --paper-top: #f4f4f4;
+    --paper-bot: #f9e7dc;
+    /* Soft peach gradient at bottom */
+    --accent: #f2aa61;
+    /* The golden yellow in the graphic */
+    --dark-bg: #2b2b2b;
+
+    --text-dark: #141414;
+    --text-muted: #555555;
+    --text-light: #e5e5e5;
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-page);
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.page-background {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.resume-wrapper {
+    width: 100%;
+    max-width: 900px;
+    /* Constrain width to look like A4 proportion */
+    position: relative;
+}
+
+/* The Paper Background */
+.resume-paper {
+    background: linear-gradient(170deg, var(--paper-top) 0%, var(--paper-bot) 100%);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    padding: 4rem 4rem 4rem 6rem;
+    /* Extra left padding for vertical text */
+}
+
+/* "RESUME" vertical text */
+.vertical-resume-text {
+    position: absolute;
+    left: 2rem;
+    bottom: 4rem;
+    transform-origin: left bottom;
+    transform: rotate(-90deg);
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 3.5rem;
+    letter-spacing: 0.15em;
+    color: #1a1a1a;
+    line-height: 1;
+}
+
+/* CSS Grid structure */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-auto-rows: min-content;
+    gap: 0 45px;
+    /* Only horizontal gap */
+}
+
+/* --- ROW 1 --- */
+.image-wrapper {
+    background: #cecece;
+    /* Grey backdrop for image */
+    border-radius: 40px;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.1);
+    /* Match black & white style */
+}
+
+.name-col {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main-name {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 0.85;
+    letter-spacing: -3px;
+    color: var(--text-dark);
+    margin-top: -5px;
+}
+
+/* --- ROW 2: The Dark Connected Blocks --- */
+.ds-col {
+    margin-top: 20px;
+}
+
+/* Left Dark Box */
+.dark-box {
+    background-color: var(--dark-bg);
+    border-radius: 40px;
+    /* Big rounded corners */
+    padding: 2.5rem 2.2rem;
+    color: var(--text-light);
+    position: relative;
+    z-index: 2;
+    /* Sits on top to hide the contact-pill overlap */
+}
+
+.quote-icon {
+    font-family: serif;
+    font-size: 7rem;
+    color: var(--accent);
+    line-height: 0.4;
+    margin-top: -10px;
+    margin-bottom: 25px;
+    margin-left: -5px;
+}
+
+.dark-title {
+    font-family: var(--font-body);
+    /* To match exact image typography */
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: white;
+}
+
+.summary-text {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #b0b0b0;
+    font-weight: 300;
+}
+
+/* Right dark pill that visually connects to the left box */
+.contact-col {
+    /* Aligning the pill block with the middle of the left dark box */
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-pill {
+    background-color: var(--dark-bg);
+    border-radius: 0 40px 40px 0;
+    /* Right corners rounded */
+    /* Padding left must be large enough to hold content AFTER the overlap */
+    padding: 1.8rem 2rem 1.8rem 4rem;
+    /* The magic overlap: pulls left across the 45px grid gap + 25px into left col */
+    margin-left: -70px;
+    /* Margin top drops it down so it connects to the flat vertical right edge of dark-box, below its top radius */
+    margin-top: 45px;
+    position: relative;
+    z-index: 1;
+    /* Slips under the left dark box */
+    min-width: 320px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.badge {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 20px;
+    padding: 3px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.arrow {
+    color: var(--accent);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.primary-contact {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.contact-details .c-row {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    display: flex;
+}
+
+.contact-details .c-label {
+    width: 65px;
+    color: #999;
+}
+
+.contact-details .c-val {
+    color: #d0d0d0;
+    font-weight: 300;
+}
+
+/* --- ROW 3 --- */
+.bottom-left,
+.bottom-right {
+    margin-top: 45px;
+}
+
+.sub-heading {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+/* Skills/Left List styling */
+.section-skills {
+    margin-bottom: 2.8rem;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.s-name {
+    flex: 1;
+    font-weight: 400;
+}
+
+.s-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.s-dots i {
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-dark);
+}
+
+.s-dots i.empty {
+    background-color: transparent;
+    border: 1px solid var(--text-dark);
+}
+
+.clean-list {
+    list-style: none;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Simple bullet styling */
+.clean-list li {
+    position: relative;
+    padding-left: 15px;
+}
+
+.clean-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+/* Right Column Content Split */
+.content-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Timeline/Experience entries */
+.timeline-item {
+    margin-bottom: 1.5rem;
+}
+
+.t-year {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.t-title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.t-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #777;
+    font-weight: 300;
+}
+
+.body-text.small {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #777;
+    font-weight: 300;
+}
+
+.spacer-30 {
+    height: 30px;
+}
+
+/* Responsive adjustments */
+@media(max-width: 900px) {
+    .resume-paper {
+        padding: 3rem;
+    }
+
+    .vertical-resume-text {
+        display: none;
+    }
+
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-pill {
+        margin-left: 0;
+        margin-top: 20px;
+        border-radius: 40px;
+        padding-left: 2rem;
+    }
+
+    .content-split {
+        grid-template-columns: 1fr;
+    }
+
+    .main-name {
+        margin-top: 20px;
+        font-size: 4rem;
+    }
+}
